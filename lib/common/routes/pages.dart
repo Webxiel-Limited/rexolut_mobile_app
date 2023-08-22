@@ -134,7 +134,7 @@ class AppPages {
         binding: CardBindings()),
     GetPage(
         name: AppRoutes.createCardPage,
-        page: () => const CreateCards(),
+        page: () =>  CreateCards(),
         binding: CreateCardBindings()),
     GetPage(
         name: AppRoutes.verifyKyc,

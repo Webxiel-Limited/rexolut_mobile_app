@@ -9,6 +9,7 @@ import 'package:rexolut/common/routes/names.dart';
 
 import 'controller.dart';
 
+
 class Cards extends GetView<CardController> {
   const Cards({super.key});
 
