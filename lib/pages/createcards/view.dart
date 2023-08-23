@@ -6,14 +6,13 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:rexolut/common/constants/colors/colors.dart';
-import 'package:rexolut/pages/cards/controller.dart';
 
 import 'controller.dart';
 
 class CreateCards extends GetView<CreateCardController> {
   CreateCards({super.key});
 
-  final CardController cardMoneyController = Get.put(CardController());
+  final CreateCardController cardMoneyController = Get.put(CreateCardController());
 
   Widget _createCards() {
     return Container(
