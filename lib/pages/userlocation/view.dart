@@ -38,7 +38,7 @@ class UserLocationScreen extends GetView<GetxController> {
   Widget _buildCountryList() {
     return SizedBox(
       width: 360.w,
-      child: CountryDropdownWidget(),
+      child: CountryDropdownWidget(width: 365.w, height: 50.h, containerColor: AppColor.surfaceColor,),
     );
   }
 
