@@ -27,4 +27,5 @@ class AppRoutes {
   static const fundCardPage = '/fund_card';
   static const fundSuccessPage = '/fund_success';
   static const cardFunded = '/card_funded';
+  static const supportPage = '/support';
 }

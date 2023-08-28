@@ -9,6 +9,7 @@ import 'package:rexolut/pages/kycsuccess/index.dart';
 import 'package:rexolut/pages/otpsent/index.dart';
 import 'package:rexolut/pages/resetsuccess/index.dart';
 import 'package:rexolut/pages/settings/bindings.dart';
+import 'package:rexolut/pages/support/index.dart';
 import 'package:rexolut/pages/verificationscreen/bindings.dart';
 import 'package:rexolut/pages/verifykyc/bindings.dart';
 import 'package:rexolut/pages/virtualcard/index.dart';
@@ -176,5 +177,10 @@ class AppPages {
         name: AppRoutes.cardFunded,
         page: () =>   CardFunded(),
         binding: VirtualFundedBindings()),
+
+    GetPage(
+        name: AppRoutes.supportPage,
+        page: () => const SupportScreen(),
+        binding: SupportScreenBindings()),
   ];
 }

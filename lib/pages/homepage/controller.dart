@@ -2,12 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:money_formatter/money_formatter.dart';
-import 'package:rexolut/utils/widgets/pageswidget/homebutton.dart';
-import 'package:rexolut/utils/widgets/pageswidget/marketbutton.dart';
-import 'package:rexolut/utils/widgets/pageswidget/tradebutton.dart';
 
-import '../../utils/widgets/pageswidget/assetsbutton.dart';
-import '../../utils/widgets/pageswidget/morebutton.dart';
 import '../../utils/widgets/pageswidget/notifications.dart';
 
 class HomeScreenController extends GetxController {

@@ -60,6 +60,7 @@ flutter:
     - assets/icons/
     - assets/amico.svg
     - assets/Frame.svg
+    - assets/faq_data.json
 
   fonts:
     - family: Sk-Modernist

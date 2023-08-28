@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
@@ -16,7 +17,7 @@ import 'controller.dart';
 
 class HomeScreen extends GetView<HomeScreenController> {
   final List<Widget> pages = [
-     ButtonHome(),
+    ButtonHome(),
     const ButtonMarket(),
     const ButtonTrade(),
     const ButtonAssets(),
@@ -31,8 +32,9 @@ class HomeScreen extends GetView<HomeScreenController> {
       backgroundColor: AppColor.surfaceColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
-        child: const DashboardAppBar(),
-
+        child:  const DashboardAppBar(
+          icon: FontAwesomeIcons.solidBell, showNotificationIcon: true,
+        ),
       ),
       body: PageView(
         controller: _controller.pageController,
