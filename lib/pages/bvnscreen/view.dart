@@ -87,7 +87,7 @@ class BvnScreen extends GetView<BvnScreenController> {
       backgroundColor: AppColor.surfaceColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.h),
-        child: const VerifyAppBar(text: 'Let\'s Verify your Identity'),
+        child:  VerifyAppBar(text: 'Let\'s Verify your Identity', fontSize: 16.sp,),
       ),
       body: Center(
         child: Column(

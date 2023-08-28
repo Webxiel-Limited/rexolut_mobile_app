@@ -14,6 +14,10 @@ class Keypad extends StatefulWidget {
 
   final VoidCallback? onDeletePressed;
 
+  final FocusNode? focusNode;
+  final bool isVisible;
+
+
   final int? maxLength;
 
   final bool dotEnabled;
@@ -25,6 +29,8 @@ class Keypad extends StatefulWidget {
     this.onDeletePressed,
     this.maxLength,
     this.dotEnabled = false,
+    required this.isVisible,
+    this.focusNode,
   }) : super(key: key);
 
 
@@ -34,9 +40,23 @@ class Keypad extends StatefulWidget {
 }
 class _KeypadState extends State<Keypad> {
 
+  bool _isFocused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.focusNode != null) {
+      widget.focusNode!.addListener(() {
+        setState(() {
+          _isFocused = widget.focusNode!.hasFocus;
+        });
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return _isFocused || widget.focusNode == null ? Material(
       type: MaterialType.transparency,
       child: SizedBox(
         height: 285.r,
@@ -101,7 +121,7 @@ class _KeypadState extends State<Keypad> {
             ),
           ],
         ),),
-    );
+    ) : Container();
   }
 
   Widget _buildNumKey(String numValue, {VoidCallback? onTap}) {
@@ -124,7 +144,7 @@ class _KeypadState extends State<Keypad> {
           onTap: onTap ??
                   () {
                 HapticFeedback.lightImpact();
-                if (widget.controller.text.length == 4) return;
+                if (widget.controller.text.length == 10) return;
                 if (widget.maxLength != null) {
                   if (widget.controller.text.length < widget.maxLength!) {
                     if (numValue == '.' && widget.controller.text.contains('.')) {

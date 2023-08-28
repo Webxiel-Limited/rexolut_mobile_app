@@ -1,88 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:rexolut/common/constants/colors/colors.dart';
+import 'package:rexolut/utils/widgets/cardbutton.dart';
+import 'package:rexolut/utils/widgets/country.dart';
 
+import '../../common/routes/names.dart';
+import '../../utils/widgets/pageswidget/rexcard.dart';
 import 'controller.dart';
 
 class CreateCards extends GetView<CreateCardController> {
   CreateCards({super.key});
 
-  final CreateCardController cardMoneyController = Get.put(CreateCardController());
-
-  Widget _createCards() {
-    return Container(
-      width: 301.w,
-      height: 173.h,
-      margin: EdgeInsets.only(top: 33.h),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.r),
-        color: AppColor.highlightColor,
-      ),
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 100.h, left: 20.w, right: 20.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Balance",
-                      style: TextStyle(
-                        color: AppColor.surfaceColor,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 2.h, left: 20.w, right: 20.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      cardMoneyController.displayCardAmount,
-                      style: TextStyle(
-                          color: AppColor.surfaceColor,
-                          fontSize: 26.sp,
-                          fontWeight: FontWeight.w500,
-                          wordSpacing: -14,
-                          letterSpacing: -2.0),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Positioned(
-            left: 230.w,
-            top: 10.h,
-            child: Container(
-              padding: EdgeInsets.all(5.r),
-              decoration: BoxDecoration(
-                  color: AppColor.surfaceTextColor,
-                  borderRadius: BorderRadius.circular(5.r)),
-              child: Text(
-                'VIRTUAL CARD',
-                style: TextStyle(
-                    fontSize: 7.sp,
-                    color: AppColor.surfaceColor,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  final CreateCardController cardMoneyController =
+      Get.put(CreateCardController());
 
   Widget _createCardInput() {
     return Container(
@@ -90,19 +21,23 @@ class CreateCards extends GetView<CreateCardController> {
       width: 300.w,
       padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(color: AppColor.highlightColor, width: 2),),
+        borderRadius: BorderRadius.circular(10.r),
+        border: Border.all(color: AppColor.highlightColor, width: 2),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'Name on Card:',
-            style: TextStyle(
-              color: AppColor.mainTextColor,
-              fontSize: 9.sp,
-              letterSpacing: -0.4,
-              wordSpacing: -1.5,
+          Padding(
+            padding: EdgeInsets.only(right: 10.w),
+            child: Text(
+              'Name on Card:',
+              style: TextStyle(
+                color: AppColor.mainTextColor,
+                fontSize: 9.sp,
+                letterSpacing: -0.4,
+                wordSpacing: -1.5,
+              ),
             ),
           ),
           SizedBox(
@@ -141,19 +76,52 @@ class CreateCards extends GetView<CreateCardController> {
     );
   }
 
+  Widget _countrySelection() {
+    return Container(
+      margin: EdgeInsets.only(top: 30.h),
+      padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
+      width: 300.w,
+      // padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.r),
+        border: Border.all(color: AppColor.highlightColor, width: 2),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(right: 25.w),
+            child: Text(
+              'Country:',
+              style: TextStyle(
+                color: AppColor.mainTextColor,
+                fontSize: 9.sp,
+                letterSpacing: -0.4,
+                wordSpacing: -1.5,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 210.w,
+            child: CountryDropdownWidget(
+              width: 150,
+              height: 45,
+              containerColor: AppColor.appbarColor, borderColor: AppColor.appbarColor,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.surfaceColor,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            FontAwesomeIcons.arrowLeftLong,
-            color: AppColor.surfaceTextColor,
-          ),
-          onPressed: () => Get.back(),
-        ),
+        automaticallyImplyLeading: false,
         title: Text(
           "Create Card",
           style: TextStyle(
@@ -167,10 +135,17 @@ class CreateCards extends GetView<CreateCardController> {
       body: Center(
           child: Column(
         children: [
-          _createCards(),
+          RexCard(cardMoneyController: cardMoneyController, fundedAmount: 'fundedAmount',),
           _createCardInput(),
+          _countrySelection(),
+          SizedBox(height: 70.h,),
+          CardButton(onTap: () {
+            Get.offAllNamed(AppRoutes.virtualCardDetailsScreen);
+          }, text: 'Fund Card', width: 300.w,),
+
         ],
       )),
     );
   }
 }
+

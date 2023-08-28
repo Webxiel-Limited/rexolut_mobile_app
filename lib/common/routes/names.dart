@@ -23,5 +23,8 @@ class AppRoutes {
   static const verificationScreen = '/driver_licence';
   static const facialRecognition = '/facial_recogn';
   static const kycSuccess = '/kyc_success';
-
+  static const virtualCardDetailsScreen = '/virtual_card_details';
+  static const fundCardPage = '/fund_card';
+  static const fundSuccessPage = '/fund_success';
+  static const cardFunded = '/card_funded';
 }

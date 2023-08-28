@@ -1,1 +1,1 @@
-class OtpState{}
+class FundingSuccessState{}

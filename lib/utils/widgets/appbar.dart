@@ -153,7 +153,8 @@ class SettingsAppBar extends StatelessWidget {
 
 class VerifyAppBar extends StatelessWidget {
   final String text;
-  const VerifyAppBar({super.key, required this.text,});
+  final double fontSize;
+  const VerifyAppBar({super.key, required this.text, required this.fontSize,});
 
 
 
@@ -166,7 +167,32 @@ class VerifyAppBar extends StatelessWidget {
         text,
         style: TextStyle(
             color: AppColor.mainColor,
-            fontSize: 16.sp,
+            fontSize: fontSize,
+            fontWeight: FontWeight.w700),
+      ),
+    );
+  }
+}
+
+
+class CustomAppBar extends StatelessWidget {
+  final String text;
+  final double fontSize;
+  const CustomAppBar({super.key, required this.text, required this.fontSize,});
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: AppColor.surfaceColor,
+      elevation: 0,
+      title: Text(
+        text,
+        style: TextStyle(
+            color: AppColor.mainColor,
+            fontSize: fontSize,
             fontWeight: FontWeight.w700),
       ),
     );
