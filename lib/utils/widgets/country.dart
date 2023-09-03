@@ -96,7 +96,7 @@ class CountrySelector extends StatelessWidget {
       CountryLocalizations.delegate,
       GlobalMaterialLocalizations.delegate,
       GlobalWidgetsLocalizations.delegate,
-    ], home: CountryDropdownWidget());
+    ], home: CountryDropdownWidget(width: 356.w, height: 50.h, containerColor: AppColor.surfaceColor, borderColor: AppColor.surfaceTextColor.withOpacity(0.8),));
   }
 }
 
@@ -107,7 +107,7 @@ class CountrySelectorNow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: CountryDropdownWidget(),
+        child: CountryDropdownWidget(width: 365.w, height: 50.h, containerColor: AppColor.surfaceColor, borderColor: AppColor.surfaceTextColor.withOpacity(0.8),),
       ),
     );
   }
@@ -115,20 +115,31 @@ class CountrySelectorNow extends StatelessWidget {
 
 class CountryDropdownWidget extends StatelessWidget {
   final UserLocationController controller = Get.put(UserLocationController());
+  final double width;
+  final double height;
+  final Color containerColor;
+  final Color borderColor;
 
-  CountryDropdownWidget({Key? key}) : super(key: key);
+  CountryDropdownWidget({
+    Key? key,
+    required this.width,
+    required this.height,
+    required this.containerColor, required this.borderColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
-            color: AppColor.mainTextColor.withOpacity(0.8),
-          ),
-          borderRadius: BorderRadius.circular(10.w)),
-      width: 365.w,
+        border: Border.all(
+          width: 1,
+          color: borderColor,
+        ),
+        borderRadius: BorderRadius.circular(10.w),
+        color: containerColor, // Set the container's color here
+      ),
+      width: width,
+      height: height,
       child: CountryCodePicker(
         onChanged: controller.onCountryChange,
         initialSelection: 'NG',
@@ -156,3 +167,4 @@ class CountryDropdownWidget extends StatelessWidget {
     );
   }
 }
+

@@ -165,8 +165,8 @@ class FacialRecognition extends GetView<FacialRecognitionController> {
       backgroundColor: AppColor.surfaceColor,
       appBar: (PreferredSize(
         preferredSize: Size.fromHeight(60.h),
-        child:  const VerifyAppBar(
-          text: 'Let\'s Verify your Identity',
+        child:   VerifyAppBar(
+          text: 'Let\'s Verify your Identity', fontSize: 16.sp,
         ),
       )),
       body: SingleChildScrollView(

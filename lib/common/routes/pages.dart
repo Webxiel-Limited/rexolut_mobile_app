@@ -2,12 +2,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:rexolut/pages/facialrecognition/index.dart';
+import 'package:rexolut/pages/fundcard/index.dart';
+import 'package:rexolut/pages/fundingsuccess/index.dart';
+import 'package:rexolut/pages/fundingsuccess/view.dart';
 import 'package:rexolut/pages/kycsuccess/index.dart';
 import 'package:rexolut/pages/otpsent/index.dart';
 import 'package:rexolut/pages/resetsuccess/index.dart';
 import 'package:rexolut/pages/settings/bindings.dart';
+import 'package:rexolut/pages/support/index.dart';
 import 'package:rexolut/pages/verificationscreen/bindings.dart';
 import 'package:rexolut/pages/verifykyc/bindings.dart';
+import 'package:rexolut/pages/virtualcard/index.dart';
 
 import '../../pages/authdashboard/bindings.dart';
 import '../../pages/authdashboard/view.dart';
@@ -47,6 +52,8 @@ import '../../pages/userlocation/view.dart';
 
 import '../../pages/verificationscreen/view.dart';
 import '../../pages/verifykyc/view.dart';
+import '../../pages/virtualfunded/bindings.dart';
+import '../../pages/virtualfunded/view.dart';
 import 'routes.dart';
 
 class AppPages {
@@ -152,6 +159,28 @@ class AppPages {
         name: AppRoutes.kycSuccess,
         page: () => const CompletedKyc(),
         binding: KycCompletedBindings()),
+    GetPage(
+        name: AppRoutes.virtualCardDetailsScreen,
+        page: () =>  VirtualCardDetails(),
+        binding: VirtualCardDetailsBindings()),
+    GetPage(
+        name: AppRoutes.fundCardPage,
+        page: () =>   FundCard(),
+        binding: FundCardBindings()),
 
+    GetPage(
+        name: AppRoutes.fundSuccessPage,
+        page: () =>  const FundingSuccess(),
+        binding: FundingSuccessBindings()),
+
+    GetPage(
+        name: AppRoutes.cardFunded,
+        page: () =>   CardFunded(),
+        binding: VirtualFundedBindings()),
+
+    GetPage(
+        name: AppRoutes.supportPage,
+        page: () => const SupportScreen(),
+        binding: SupportScreenBindings()),
   ];
 }

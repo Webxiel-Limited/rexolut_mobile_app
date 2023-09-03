@@ -7,6 +7,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:rexolut/common/constants/colors/colors.dart';
 import 'package:rexolut/common/routes/names.dart';
 
+import '../../utils/widgets/cardbutton.dart';
 import 'controller.dart';
 
 
@@ -87,8 +88,7 @@ class Cards extends GetView<CardController> {
               ),
             ),
             Positioned(
-              left: 50
-                  .w, // Adjust the left and top values to position the second container
+              left: 50.w,
               top: 113.h,
               child: Container(
                 width: 301.w,
@@ -169,7 +169,7 @@ class Cards extends GetView<CardController> {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.only(left: 40.w, right: 40, top: 45.h),
+          margin: EdgeInsets.only(left: 40.w, right: 40, top: 35.h),
           child: Text(
             'Make Payments Seamlessly from your Crypto wallet',
             style: TextStyle(
@@ -181,7 +181,7 @@ class Cards extends GetView<CardController> {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 25.h, left: 35, right: 35),
+          margin: EdgeInsets.only(top: 20.h, left: 35, right: 35),
           child: Text(
             'Instantly get cash for crypto. Send it to your bank account, or spend online and in-store with your Beta Visa Debit card',
             style: TextStyle(
@@ -195,6 +195,27 @@ class Cards extends GetView<CardController> {
     );
   }
 
+  Widget _buttons(){
+    return Column(
+      children:[
+        SizedBox(height: 20.h,),
+        CardButton(
+          onTap: () {
+            Get.offNamed(AppRoutes.createCardPage);
+          }, text: 'Create New Card', width: 250.w,
+        ),
+
+        SizedBox(height: 20.h,),
+
+        CardButton(
+          onTap: () {
+            Get.offNamed(AppRoutes.cardFunded);
+          }, text: 'My Cards', width: 250.w,
+        ),
+      ]
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -204,52 +225,10 @@ class Cards extends GetView<CardController> {
         children: [
           _buildMockCard(),
           _buildCardHeaderDesc(),
-          CardButton(
-            onTap: () {
-              Get.offNamed(AppRoutes.createCardPage);
-            }, text: 'Create New Card',
-          ),
+          _buttons()
         ],
       )),
     );
   }
 }
 
-class CardButton extends StatelessWidget {
-  final VoidCallback onTap;
-  final String text;
-  const CardButton({
-    super.key,
-    required this.onTap, required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 50.h,
-        width: 250,
-        margin: EdgeInsets.only(top: 30.h),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(13.r),
-          color: AppColor.highlightColor,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              text,
-              style: TextStyle(
-                color: AppColor.surfaceColor,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

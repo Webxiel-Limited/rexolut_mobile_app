@@ -3,6 +3,8 @@ import 'package:money_formatter/money_formatter.dart';
 
 class CreateCardController extends GetxController{
   RxDouble cardAccountBalance = 0.0.obs;
+  final RxBool isCardFunded = false.obs;
+
 
   String get displayCardAmount {
     MoneyFormatter formatter = MoneyFormatter(amount: cardAccountBalance.value);

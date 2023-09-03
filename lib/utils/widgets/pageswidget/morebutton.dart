@@ -162,7 +162,9 @@ class ButtonMore extends StatelessWidget {
             _buildHomeIconWithText(
               FontAwesomeIcons.headset,
               'Support',
-              () {},
+              () {
+                Get.offNamed(AppRoutes.supportPage);
+              },
             ),
             _buildHomeIconWithText(
               Icons.star_border,

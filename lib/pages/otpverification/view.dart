@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../common/constants/colors/colors.dart';
@@ -17,6 +14,8 @@ class OtpScreen extends GetView<OtpScreenController> {
   OtpScreen({super.key});
   final formKey = GlobalKey<FormState>();
   final TextEditingController pinController = TextEditingController();
+  final FocusNode _inputFocusNode = FocusNode();
+
 
 
 
@@ -230,6 +229,7 @@ class OtpScreen extends GetView<OtpScreenController> {
                     }
                   },
                   maxLength: 4,
+                  isVisible: true,
                 ),
               ],
             ),

@@ -104,7 +104,7 @@ class TermsAndConditions extends GetView<TermsAndConditionsControllers> {
                 isChecked.value = selected!;
               },
               size: 25,
-              checkedColor: Colors.green, // Change color when selected
+              checkedColor: AppColor.mainColor, // Change color when selected
             ),
             const SizedBox(width: 10),
             Text(

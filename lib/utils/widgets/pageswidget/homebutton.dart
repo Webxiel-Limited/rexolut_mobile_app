@@ -9,6 +9,7 @@ import 'package:unicons/unicons.dart';
 
 import '../../../common/constants/colors/colors.dart';
 import '../../../common/routes/names.dart';
+import '../iconswithtext.dart';
 
 class ButtonHome extends StatelessWidget {
   ButtonHome({
@@ -58,45 +59,9 @@ class ButtonHome extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _buildIconWithText(UniconsLine.arrow_up_right, 'SEND', () {}),
-        _buildIconWithText(UniconsLine.arrow_down_left, 'RECEIVE', () {}),
-        _buildIconWithText(Icons.currency_exchange, 'CONVERT', () {}),
-      ],
-    );
-  }
-
-  Widget _buildIconWithText(
-      IconData iconData, String text, VoidCallback onPressed) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: onPressed,
-          child: Container(
-            width: 45.w,
-            height: 45.w,
-            decoration: ShapeDecoration(
-              shape: CircleBorder(
-                side: BorderSide(
-                  width: 1.w,
-                  color: AppColor.highlightColor,
-                ),
-              ),
-            ),
-            child: Icon(
-              iconData,
-              size: 20.sp,
-              color: AppColor.highlightColor,
-            ),
-          ),
-        ),
-        SizedBox(height: 5.h),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 12.sp,
-            color: AppColor.highlightColor,
-          ),
-        ),
+        IconsWithText(iconData: UniconsLine.arrow_up_right, text: 'SEND', onPressed: () {}),
+        IconsWithText(iconData: UniconsLine.arrow_down_left, text: 'RECEIVE', onPressed: () {}),
+        IconsWithText(iconData: Icons.currency_exchange, text: 'CONVERT', onPressed: () {}),
       ],
     );
   }
@@ -217,3 +182,5 @@ class ButtonHome extends StatelessWidget {
     );
   }
 }
+
+
